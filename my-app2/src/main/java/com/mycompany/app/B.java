@@ -8,6 +8,6 @@ public class B
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World! - 0.0.2" );
+        System.out.println( "Hello World! - feature - 0.0.2" );
     }
 }
