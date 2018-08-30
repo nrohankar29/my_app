@@ -1,10 +1,9 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mycompany.app</groupId>
 	<artifactId>my-parent</artifactId>
-	<version>0.0.4-SNAPSHOT</version>
+	<version>0.0.4</version>
 	<packaging>pom</packaging>
 
 	<name>MavenExamples Parent</name>
@@ -66,6 +65,45 @@
 					<id>central</id>
 					<name>tahir-tamboli-releases</name>
 					<url>http://172.16.1.112:8081/artifactory/libs-staging-local</url>
+				</repository>
+				<snapshotRepository>
+					<id>snapshots</id>
+					<name>tahir-tamboli-snapshots</name>
+					<url>http://172.16.1.112:8081/artifactory/libs-snapshot-local</url>
+				</snapshotRepository>
+			</distributionManagement>
+		</profile>
+		
+		
+		<profile>
+			<id>qa-prod</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>external.atlassian.jgitflow</groupId>
+						<artifactId>jgitflow-maven-plugin</artifactId>
+						<version>1.0-m5.1</version>
+						<configuration>
+							<flowInitContext>
+								<masterBranchName>master</masterBranchName>
+								<developBranchName>staging</developBranchName>
+								<featureBranchPrefix>feature-</featureBranchPrefix>
+								<releaseBranchPrefix>release-</releaseBranchPrefix>
+								<hotfixBranchPrefix>hotfix-</hotfixBranchPrefix>
+								<versionTagPrefix>v-</versionTagPrefix>
+							</flowInitContext>
+							<noDeploy>false</noDeploy>
+							<squash>true</squash>
+							<scmCommentPrefix>[RELEASE] </scmCommentPrefix>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+			<distributionManagement>
+				<repository>
+					<id>central</id>
+					<name>tahir-tamboli-releases</name>
+					<url>http://172.16.1.112:8081/artifactory/libs-release-local</url>
 				</repository>
 				<snapshotRepository>
 					<id>snapshots</id>
