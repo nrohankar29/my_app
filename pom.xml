@@ -73,6 +73,45 @@
 				</snapshotRepository>
 			</distributionManagement>
 		</profile>
+		
+		
+		<profile>
+			<id>qa-prod</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>external.atlassian.jgitflow</groupId>
+						<artifactId>jgitflow-maven-plugin</artifactId>
+						<version>1.0-m5.1</version>
+						<configuration>
+							<flowInitContext>
+								<masterBranchName>master</masterBranchName>
+								<developBranchName>staging</developBranchName>
+								<featureBranchPrefix>feature-</featureBranchPrefix>
+								<releaseBranchPrefix>release-</releaseBranchPrefix>
+								<hotfixBranchPrefix>hotfix-</hotfixBranchPrefix>
+								<versionTagPrefix>v-</versionTagPrefix>
+							</flowInitContext>
+							<noDeploy>false</noDeploy>
+							<squash>true</squash>
+							<scmCommentPrefix>[RELEASE] </scmCommentPrefix>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+			<distributionManagement>
+				<repository>
+					<id>central</id>
+					<name>tahir-tamboli-releases</name>
+					<url>http://172.16.1.112:8081/artifactory/libs-release-local</url>
+				</repository>
+				<snapshotRepository>
+					<id>snapshots</id>
+					<name>tahir-tamboli-snapshots</name>
+					<url>http://172.16.1.112:8081/artifactory/libs-snapshot-local</url>
+				</snapshotRepository>
+			</distributionManagement>
+		</profile>
 	</profiles>
 
 
