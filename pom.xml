@@ -36,113 +36,45 @@
 		</dependency>
 
 	</dependencies>
-	<profiles>
-		<profile>
-			<id>qa-release</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>external.atlassian.jgitflow</groupId>
-						<artifactId>jgitflow-maven-plugin</artifactId>
-						<version>1.0-m5.1</version>
-						<configuration>
-							<flowInitContext>
-								<masterBranchName>staging</masterBranchName>
-								<developBranchName>develop</developBranchName>
-								<featureBranchPrefix>feature-</featureBranchPrefix>
-								<releaseBranchPrefix>release-</releaseBranchPrefix>
-								<hotfixBranchPrefix>hotfix-</hotfixBranchPrefix>
-								<versionTagPrefix>rc-</versionTagPrefix>
-							</flowInitContext>
-							<noDeploy>true</noDeploy>
-							<squash>true</squash>
-							<scmCommentPrefix>[RELEASE] </scmCommentPrefix>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-			<distributionManagement>
-				<repository>
-					<id>central</id>
-					<name>tahir-tamboli-releases</name>
-					<url>http://172.16.1.112:8081/artifactory/libs-staging-local</url>
-				</repository>
-				<snapshotRepository>
-					<id>snapshots</id>
-					<name>tahir-tamboli-snapshots</name>
-					<url>http://172.16.1.112:8081/artifactory/libs-snapshot-local</url>
-				</snapshotRepository>
-			</distributionManagement>
-		</profile>
-
-
-		<profile>
-			<id>qa-prod</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>external.atlassian.jgitflow</groupId>
-						<artifactId>jgitflow-maven-plugin</artifactId>
-						<version>1.0-m5.1</version>
-						<configuration>
-							<flowInitContext>
-								<masterBranchName>master</masterBranchName>
-								<developBranchName>staging</developBranchName>
-								<featureBranchPrefix>feature-</featureBranchPrefix>
-								<releaseBranchPrefix>release-</releaseBranchPrefix>
-								<hotfixBranchPrefix>hotfix-</hotfixBranchPrefix>
-								<versionTagPrefix>v-</versionTagPrefix>
-							</flowInitContext>
-							<noDeploy>false</noDeploy>
-							<squash>true</squash>
-							<scmCommentPrefix>[RELEASE] </scmCommentPrefix>
-						</configuration>
-					</plugin>
-					<plugin>
-						<groupId>com.e-gineering</groupId>
-						<artifactId>gitflow-helper-maven-plugin</artifactId>
-						<version>2.0.0</version>
-						<extensions>true</extensions>
-						<configuration>
-							<!-- These repository definitions expect either a configured repository 
-								id, or an inline definition like 'id::layout::url::unique' For example: release::default::https://some.server.path/content/repositories/test-releases::false -->
-							<releaseDeploymentRepository>libs-release-local::default::http://172.16.1.112:8081/artifactory/libs-release-local::false</releaseDeploymentRepository>
-							<stageDeploymentRepository>libs-staging-local::default::http://172.16.1.112:8081/artifactory/libs-staging-local::false</stageDeploymentRepository>
-							<snapshotDeploymentRepository>libs-snapshot-local::default::http://172.16.1.112:8081/artifactory/libs-snapshot-local::false</snapshotDeploymentRepository>
-							<!-- Allow branches starting with feature/poc to be published as automagically 
-								versioned branch-name-SNAPSHOT artifacts -->
-							<otherDeploymentBranchPattern>(origin/)feature/poc/.*</otherDeploymentBranchPattern>
-						</configuration>
-						<executions>
-							<execution>
-								<goals>
-									<goal>enforce-versions</goal>
-									<goal>set-properties</goal>
-									<goal>retarget-deploy</goal>
-									<goal>update-stage-dependencies</goal>
-									<goal>tag-master</goal>
-									<goal>promote-master</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
+	<build>
+		<plugins>
 			
-			<distributionManagement>
-				<repository>
-					<id>central</id>
-					<name>tahir-tamboli-releases</name>
-					<url>http://172.16.1.112:8081/artifactory/libs-release-local</url>
-				</repository>
-				<snapshotRepository>
-					<id>snapshots</id>
-					<name>tahir-tamboli-snapshots</name>
-					<url>http://172.16.1.112:8081/artifactory/libs-snapshot-local</url>
-				</snapshotRepository>
-			</distributionManagement>
-		</profile>
-	</profiles>
+			<plugin>
+				<groupId>com.e-gineering</groupId>
+				<artifactId>gitflow-helper-maven-plugin</artifactId>
+				<version>2.0.0</version>
+				<configuration>
+					<releaseDeploymentRepository>nexus-server-id::default::http://path/to/releases/::false</releaseDeploymentRepository>
+					<stageDeploymentRepository>nexus-server-id::default::http://path/to/stage/::false</stageDeploymentRepository>
+					<snapshotDeploymentRepository>nexus-server-id::default::http://path/to/snapshots/::true</snapshotDeploymentRepository>
+				</configuration>
+				<extensions>true</extensions>
+				<executions>
+					<execution>
+						<goals>
+							<goal>enforce-versions</goal>
+							<goal>retarget-deploy</goal>
+							<goal>tag-master</goal>
+							<goal>promote-master</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<distributionManagement>
+		<repository>
+			<id>central</id>
+			<name>tahir-tamboli-releases</name>
+			<url>http://172.16.1.112:8081/artifactory/libs-release-local</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>tahir-tamboli-snapshots</name>
+			<url>http://172.16.1.112:8081/artifactory/libs-snapshot-local</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 
 </project>
