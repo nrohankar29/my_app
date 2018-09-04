@@ -123,9 +123,6 @@
 									<goal>tag-master</goal>
 									<goal>promote-master</goal>
 								</goals>
-								<configuration>
-									
-								</configuration>
 							</execution>
 						</executions>
 					</plugin>
