@@ -106,9 +106,9 @@
 						<configuration>
 							<!-- These repository definitions expect either a configured repository 
 								id, or an inline definition like 'id::layout::url::unique' For example: release::default::https://some.server.path/content/repositories/test-releases::false -->
-							<releaseDeploymentRepository>libs-release-local</releaseDeploymentRepository>
-							<stageDeploymentRepository>libs-staging-local</stageDeploymentRepository>
-							<snapshotDeploymentRepository>libs-snapshot-local</snapshotDeploymentRepository>
+							<releaseDeploymentRepository>libs-release-local::default::http://172.16.1.112:8081/artifactory/libs-release-local::false</releaseDeploymentRepository>
+							<stageDeploymentRepository>libs-staging-local::default::http://172.16.1.112:8081/artifactory/libs-staging-local::false</stageDeploymentRepository>
+							<snapshotDeploymentRepository>libs-snapshot-local::default::http://172.16.1.112:8081/artifactory/libs-snapshot-local::false</snapshotDeploymentRepository>
 							<!-- Allow branches starting with feature/poc to be published as automagically 
 								versioned branch-name-SNAPSHOT artifacts -->
 							<otherDeploymentBranchPattern>(origin/)feature/poc/.*</otherDeploymentBranchPattern>
