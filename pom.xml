@@ -44,9 +44,9 @@
 				<artifactId>gitflow-helper-maven-plugin</artifactId>
 				<version>2.0.0</version>
 				<configuration>
-					<releaseDeploymentRepository>libs-release-local::default::http://172.16.1.112:8081/artifactory/libs-release-local::false</releaseDeploymentRepository>
-					<stageDeploymentRepository>libs-staging-local::default::http://172.16.1.112:8081/artifactory/libs-staging-local::false</stageDeploymentRepository>
-					<snapshotDeploymentRepository>libs-snapshot-local::default::http://172.16.1.112:8081/artifactory/libs-snapshot-local::true</snapshotDeploymentRepository>
+					<releaseDeploymentRepository>libs-release-local::default::http://localhost:8081/artifactory/libs-release-local::false</releaseDeploymentRepository>
+					<stageDeploymentRepository>libs-staging-local::default::http://localhost:8081/artifactory/libs-staging-local::false</stageDeploymentRepository>
+					<snapshotDeploymentRepository>libs-snapshot-local::default::http://localhost:8081/artifactory/libs-snapshot-local::true</snapshotDeploymentRepository>
 				</configuration>
 				<extensions>true</extensions>
 				<executions>
@@ -67,12 +67,12 @@
 		<repository>
 			<id>central</id>
 			<name>tahir-tamboli-releases</name>
-			<url>http://172.16.1.112:8081/artifactory/libs-release-local</url>
+			<url>http://localhost:8081/artifactory/libs-release-local</url>
 		</repository>
 		<snapshotRepository>
 			<id>snapshots</id>
 			<name>tahir-tamboli-snapshots</name>
-			<url>http://172.16.1.112:8081/artifactory/libs-snapshot-local</url>
+			<url>http://localhost:8081/artifactory/libs-snapshot-local</url>
 		</snapshotRepository>
 	</distributionManagement>
 
