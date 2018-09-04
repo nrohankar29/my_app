@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mycompany.app</groupId>
@@ -73,8 +74,8 @@
 				</snapshotRepository>
 			</distributionManagement>
 		</profile>
-		
-		
+
+
 		<profile>
 			<id>qa-prod</id>
 			<build>
@@ -96,6 +97,37 @@
 							<squash>true</squash>
 							<scmCommentPrefix>[RELEASE] </scmCommentPrefix>
 						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>com.e-gineering</groupId>
+						<artifactId>gitflow-helper-maven-plugin</artifactId>
+						<version>2.0.0</version>
+						<extensions>true</extensions>
+						<configuration>
+							<!-- These repository definitions expect either a configured repository 
+								id, or an inline definition like 'id::layout::url::unique' For example: release::default::https://some.server.path/content/repositories/test-releases::false -->
+							<releaseDeploymentRepository>libs-release-local</releaseDeploymentRepository>
+							<stageDeploymentRepository>libs-staging-local</stageDeploymentRepository>
+							<snapshotDeploymentRepository>libs-snapshot-local</snapshotDeploymentRepository>
+							<!-- Allow branches starting with feature/poc to be published as automagically 
+								versioned branch-name-SNAPSHOT artifacts -->
+							<otherDeploymentBranchPattern>(origin/)feature/poc/.*</otherDeploymentBranchPattern>
+						</configuration>
+						<executions>
+							<execution>
+								<goals>
+									<goal>enforce-versions</goal>
+									<goal>set-properties</goal>
+									<goal>retarget-deploy</goal>
+									<goal>update-stage-dependencies</goal>
+									<goal>tag-master</goal>
+									<goal>promote-master</goal>
+								</goals>
+								<configuration>
+									
+								</configuration>
+							</execution>
+						</executions>
 					</plugin>
 				</plugins>
 			</build>
