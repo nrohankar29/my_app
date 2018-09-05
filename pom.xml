@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.mycompany.app</groupId>
 	<artifactId>my-parent</artifactId>
-	<version>0.0.7</version>
+	<version>0.0.8-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>MavenExamples Parent</name>
 	<url>http://maven.apache.org</url>
@@ -20,7 +20,7 @@
 		<url>https://github.com/gkhakare/jgitflow-test</url>
 		<connection>scm:git:git://github.com/gkhakare/jgitflow-test.git</connection>
 		<developerConnection>scm:git:git@github.com:gkhakare/jgitflow-test.git</developerConnection>
-	  <tag>v0.0.7</tag>
+	  <tag>HEAD</tag>
   </scm>
 
 	<dependencies>
