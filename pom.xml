@@ -16,6 +16,12 @@
 		<junit.version>3.8.1</junit.version>
 		<spring.version>4.3.5.RELEASE</spring.version>
 	</properties>
+	
+	<scm>
+		<url>https://github.com/gkhakare/jgitflow-test</url>
+		<connection>scm:git:git://github.com/gkhakare/jgitflow-test.git</connection>
+		<developerConnection>scm:git:git@github.com:gkhakare/jgitflow-test.git</developerConnection>
+	</scm>
 
 	<dependencies>
 
@@ -35,7 +41,7 @@
 	</dependencies>
 	<build>
 		<plugins>
-			
+<!--  
 			<plugin>
 				<groupId>com.e-gineering</groupId>
 				<artifactId>gitflow-helper-maven-plugin</artifactId>
@@ -56,6 +62,14 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin> -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.5.3</version>
+				<configuration>
+					<tagNameFormat>v@{project.version}</tagNameFormat>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
