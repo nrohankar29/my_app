@@ -41,7 +41,7 @@
 	</dependencies>
 	<build>
 		<plugins>
-<!--  
+  
 			<plugin>
 				<groupId>com.e-gineering</groupId>
 				<artifactId>gitflow-helper-maven-plugin</artifactId>
@@ -62,8 +62,8 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin> -->
-			<plugin>
+			</plugin> 
+			<!--<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
 				<version>2.5.3</version>
@@ -71,6 +71,15 @@
 					<tagNameFormat>v@{project.version}</tagNameFormat>
 				</configuration>
 			</plugin>
+			-->
+			<plugin>
+            <groupId>com.amashchenko.maven.plugin</groupId>
+            <artifactId>gitflow-maven-plugin</artifactId>
+            <version>1.10.0</version>
+            <configuration>
+                <!-- optional configuration -->
+            </configuration>
+        </plugin>
 		</plugins>
 	</build>
 
