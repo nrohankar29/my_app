@@ -67,7 +67,7 @@
 				<version>2.5.3</version> <configuration> <tagNameFormat>v@{project.version}</tagNameFormat> 
 				</configuration> </plugin> -->
 
-			<!-- 
+			
 			<plugin>
 				<groupId>com.amashchenko.maven.plugin</groupId>
 				<artifactId>gitflow-maven-plugin</artifactId>
@@ -75,15 +75,15 @@
 				<configuration>
 				</configuration>
 			</plugin>
-			-->
+			<!-- 
 			<plugin>
 				<groupId>external.atlassian.jgitflow</groupId>
 				<artifactId>jgitflow-maven-plugin</artifactId>
 				<version>1.0-m5.1</version>
 				<configuration>
-					<!-- see goals wiki page for configuration options -->
 				</configuration>
 			</plugin>
+			-->
 		</plugins>
 	</build>
 
