@@ -19,9 +19,9 @@
 	</properties>
 
 	<scm>
-		<url>https://github.com/gkhakare/jgitflow-test</url>
-		<connection>scm:git:git://github.com/gkhakare/jgitflow-test.git</connection>
-		<developerConnection>scm:git:git@github.com:gkhakare/jgitflow-test.git</developerConnection>
+		<url>https://github.com/nrohankar29/jgitflow-test</url>
+		<connection>scm:git:git://github.com/nrohankar29/jgitflow-test.git</connection>
+		<developerConnection>scm:git:git@github.com:nrohankar29/jgitflow-test.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
 
@@ -88,7 +88,7 @@
 		</plugins>
 	</build>
 
-	<distributionManagement>
+	<!--<distributionManagement>
 		<repository>
 			<id>central</id>
 			<name>tahir-tamboli-releases</name>
@@ -99,7 +99,7 @@
 			<name>tahir-tamboli-snapshots</name>
 			<url>http://localhost:8081/artifactory/libs-snapshot-local</url>
 		</snapshotRepository>
-	</distributionManagement>
+	</distributionManagement>-->
 
 
 </project>
