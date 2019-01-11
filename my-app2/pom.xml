@@ -7,7 +7,7 @@
 	<parent>
 		<artifactId>my-parent</artifactId>
 		<groupId>com.mycompany.app</groupId>
-		<version>0.0.1</version>
+		<version>0.0.2</version>
 	</parent>
 	<dependencies>
 		<dependency>
