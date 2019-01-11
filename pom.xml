@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.mycompany.app</groupId>
 	<artifactId>my-parent</artifactId>
-	<version>0.0.4</version>
+	<version>0.0.3</version>
 	<packaging>pom</packaging>
 	<name>MavenExamples Parent</name>
 	<url>http://maven.apache.org</url>
@@ -64,11 +64,14 @@
 					</execution>
 				</executions>
 			</plugin>
+<<<<<<< HEAD
 			<!--<plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-release-plugin</artifactId> 
 				<version>2.5.3</version> <configuration> <tagNameFormat>v@{project.version}</tagNameFormat> 
 				</configuration> </plugin> -->
 
 			
+=======
+>>>>>>> 1c8b2ed909f10f80c6d7dc8dcd008e85853497a7
 			<plugin>
 				<groupId>com.amashchenko.maven.plugin</groupId>
 				<artifactId>gitflow-maven-plugin</artifactId>
@@ -76,6 +79,7 @@
 				<configuration>
 				</configuration>
 			</plugin>
+<<<<<<< HEAD
 			<!-- 
 			<plugin>
 				<groupId>external.atlassian.jgitflow</groupId>
@@ -89,3 +93,8 @@
 	</build>
 
 </project>
+=======
+		</plugins>
+	</build>
+</project>
+>>>>>>> 1c8b2ed909f10f80c6d7dc8dcd008e85853497a7
