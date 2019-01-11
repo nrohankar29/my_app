@@ -1,0 +1,76 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.mycompany.app</groupId>
+	<artifactId>my-parent</artifactId>
+	<version>0.0.1</version>
+	<packaging>pom</packaging>
+	<name>MavenExamples Parent</name>
+	<url>http://maven.apache.org</url>
+	<modules>
+		<module>my-app</module>
+		<module>my-app2</module>
+	</modules>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<junit.version>3.8.1</junit.version>
+		<spring.version>4.3.5.RELEASE</spring.version>
+	</properties>
+
+	<scm>
+		<url>https://github.com/nrohankar29/jgitflow-test</url>
+		<connection>scm:git:git://github.com/nrohankar29/jgitflow-test.git</connection>
+		<developerConnection>scm:git:git@github.com:nrohankar29/jgitflow-test.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+	</dependencies>
+	<build>
+		<plugins>
+
+			<plugin>
+				<groupId>com.e-gineering</groupId>
+				<artifactId>gitflow-helper-maven-plugin</artifactId>
+				<version>2.0.0</version>
+				<configuration>
+					<releaseDeploymentRepository>central::default::http://localhost:8081/artifactory/libs-release-local::false</releaseDeploymentRepository>
+					<stageDeploymentRepository>staging::default::http://localhost:8081/artifactory/libs-staging-local::false</stageDeploymentRepository>
+					<snapshotDeploymentRepository>snapshots::default::http://localhost:8081/artifactory/libs-snapshot-local::true</snapshotDeploymentRepository>
+				</configuration>
+				<extensions>true</extensions>
+				<executions>
+					<execution>
+						<goals>
+							<goal>enforce-versions</goal>
+							<goal>retarget-deploy</goal>
+							<goal>promote-master</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.amashchenko.maven.plugin</groupId>
+				<artifactId>gitflow-maven-plugin</artifactId>
+				<version>1.10.0</version>
+				<configuration>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
